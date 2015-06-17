@@ -51,6 +51,21 @@ TEST_CASE("Sphere volume calculation", "[volume]") {
         REQUIRE(s.volume() == Approx(4.188790204786391));
 }
 
+TEST_CASE("Box default construction", "[constructor]") {
+        Box b{};
+        glm::vec3 p{0.0, 0.0, 0.0};
+        REQUIRE(b.getMin() == p);
+        REQUIRE(b.getMax() == p);
+}
+
+TEST_CASE("Box construction", "[constructor]") {
+        glm::vec3 min{1.0, 1.0, 1.0};
+        glm::vec3 max{5.0, 5.0, 5.0};
+        Box b{min, max};
+        REQUIRE(b.getMin() == min);
+        REQUIRE(b.getMax() == max);
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
