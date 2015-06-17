@@ -1,0 +1,27 @@
+#ifndef BUW_BOX_HPP
+#define BUW_BOX_HPP
+
+#include <glm/vec3.hpp>
+
+class Box: public Shape {
+public:
+        Box();
+        Box(Box const& b);
+        Box(Box&& b);
+        Box(glm::vec3 const& min, glm::vec3 const& max);
+
+        friend void swap(Box & b1, Box & b2);
+
+        glm::vec3 getMin() const;
+
+        glm::vec3 getMax() const;
+
+        /* virtual */ double area() const;
+
+        /* virtual */ double volume() const;
+private:
+        glm::vec3 min_;
+        glm::vec3 max_;
+};
+
+#endif
