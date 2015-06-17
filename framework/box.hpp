@@ -2,6 +2,7 @@
 #define BUW_BOX_HPP
 
 #include <glm/vec3.hpp>
+#include <math.h>
 
 class Box: public Shape {
 public:

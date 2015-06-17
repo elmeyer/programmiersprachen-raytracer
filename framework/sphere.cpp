@@ -1,5 +1,4 @@
 #include "sphere.hpp"
-#include <math.h>
 
 Sphere::Sphere(): // default constructor
         center_{0.0, 0.0, 0.0},
