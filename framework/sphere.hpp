@@ -2,6 +2,7 @@
 #define BUW_SPHERE_HPP
 
 #include <glm/vec3.hpp>
+#include <math.h>
 
 class Sphere: public Shape {
 public:
@@ -34,6 +35,14 @@ public:
 
         glm::vec3 getCenter() const {
                 return center_;
+        }
+
+        /* virtual */ double area() const {
+                return (4 * M_PI * radius_ * radius_);
+        }
+
+        /* virtual */ double volume() const {
+                return ((4.0/3.0) * M_PI * radius_ * radius_ * radius_);
         }
 private:
         glm::vec3 center_;
