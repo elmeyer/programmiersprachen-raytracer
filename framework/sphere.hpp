@@ -11,8 +11,18 @@ public:
         Sphere(); // default constructor
         Sphere(Sphere const& s); // copy constructor
         Sphere(Sphere&& s); // move constructor, copy & swap
+        Sphere(std::string const& name);
+        Sphere(Color const& c);
+        Sphere(std::string const& name, Color const& c);
         Sphere(glm::vec3 const& c, double r);
+        Sphere(glm::vec3 const& c, double r, std::string const& name);
+        Sphere(glm::vec3 const& c, double r, Color const& c);
+        Sphere(glm::vec3 const& c, double r, std::string const& name,
+                Color const& c);
         Sphere(double r);
+        Sphere(double r, std::string const& name);
+        Sphere(double r, Color const& c);
+        Sphere(double r, std::string const& name, Color const& c);
 
         void swap(Sphere & s1, Sphere & s2);
         
