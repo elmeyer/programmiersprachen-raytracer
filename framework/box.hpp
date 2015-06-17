@@ -1,6 +1,7 @@
 #ifndef BUW_BOX_HPP
 #define BUW_BOX_HPP
 
+#include <utility>
 #include <math.h>
 #include <glm/vec3.hpp>
 #include "shape.hpp"
@@ -12,7 +13,7 @@ public:
         Box(Box&& b); // move constructor, copy & swap
         Box(glm::vec3 const& min, glm::vec3 const& max);
 
-        friend void swap(Box & b1, Box & b2);
+        void swap(Box & b1, Box & b2);
 
         glm::vec3 getMin() const;
 

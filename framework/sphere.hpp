@@ -1,6 +1,7 @@
 #ifndef BUW_SPHERE_HPP
 #define BUW_SPHERE_HPP
 
+#include <utility>
 #include <math.h>
 #include <glm/vec3.hpp>
 #include "shape.hpp"
@@ -13,7 +14,7 @@ public:
         Sphere(glm::vec3 const& c, double r);
         Sphere(double r);
 
-        friend void swap(Sphere & s1, Sphere & s2);
+        void swap(Sphere & s1, Sphere & s2);
         
         double getRadius() const;
 

@@ -26,7 +26,7 @@ Sphere::Sphere(double r):
         radius_{r}
         {}
 
-friend void Sphere::swap(Sphere & s1, Sphere & s2) {
+void Sphere::swap(Sphere & s1, Sphere & s2) {
         std::swap(s1.center_, s2.center_);
         std::swap(s1.radius_, s2.radius_);
 }

@@ -15,13 +15,13 @@ Box::Box(Box&& b): // move constructor
         {
                 swap(*this, b);
         }
-        
+
 Box::Box(glm::vec3 const& min, glm::vec3 const& max):
         min_{min},
         max_{max}
         {}
 
-friend void Box::swap(Box & b1, Box & b2) {
+void Box::swap(Box & b1, Box & b2) {
         std::swap(b1.min_, b2.min_);
         std::swap(b1.max_, b2.max_);
 }
