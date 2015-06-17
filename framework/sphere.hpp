@@ -27,6 +27,14 @@ public:
                 std::swap(s1.center_, s2.center_);
                 std::swap(s1.radius_, s2.radius_);
         }
+
+        double getRadius() const {
+                return radius_;
+        }
+
+        glm::vec3 getCenter() const {
+                return center_;
+        }
 private:
         glm::vec3 center_;
         double radius_;
