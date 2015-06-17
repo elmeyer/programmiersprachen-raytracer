@@ -2,7 +2,6 @@
 #define BUW_SPHERE_HPP
 
 #include <glm/vec3.hpp>
-#include <math.h>
 
 class Sphere: public Shape {
 public:
