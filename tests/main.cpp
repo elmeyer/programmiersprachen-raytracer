@@ -94,6 +94,13 @@ TEST_CASE("Box area calculation", "[area]") {
         REQUIRE(b.area() == Approx(96.0));
 }
 
+TEST_CASE("Box volume calculation", "[volume]") {
+        glm::vec3 min{1.0, 1.0, 1.0};
+        glm::vec3 max{5.0, 5.0, 5.0};
+        Box b{min, max};
+        REQUIRE(b.volume() == Approx(64.0));
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
