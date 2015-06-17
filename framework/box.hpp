@@ -6,9 +6,9 @@
 
 class Box: public Shape {
 public:
-        Box();
-        Box(Box const& b);
-        Box(Box&& b);
+        Box(); // default constructor
+        Box(Box const& b); // copy constructor
+        Box(Box&& b); // move constructor, copy & swap
         Box(glm::vec3 const& min, glm::vec3 const& max);
 
         friend void swap(Box & b1, Box & b2);

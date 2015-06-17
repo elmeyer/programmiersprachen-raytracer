@@ -6,9 +6,9 @@
 
 class Sphere: public Shape {
 public:
-        Sphere();
-        Sphere(Sphere const& s);
-        Sphere(Sphere&& s);
+        Sphere(); // default constructor
+        Sphere(Sphere const& s); // copy constructor
+        Sphere(Sphere&& s); // move constructor, copy & swap
         Sphere(glm::vec3 const& c, double r);
 
         friend void swap(Sphere & s1, Sphere & s2);
