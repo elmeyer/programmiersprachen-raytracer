@@ -4,15 +4,18 @@ Box::Box(): // default constructor
         min_{0.0, 0.0, 0.0},
         max_{0.0, 0.0, 0.0}
         {}
+
 Box::Box(Box const& b): // copy constructor
         min_{b.min_},
         max_{b.max_}
         {}
+
 Box::Box(Box&& b): // move constructor
         Box()
         {
                 swap(*this, b);
         }
+        
 Box::Box(glm::vec3 const& min, glm::vec3 const& max):
         min_{min},
         max_{max}
