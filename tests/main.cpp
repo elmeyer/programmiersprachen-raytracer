@@ -87,6 +87,13 @@ TEST_CASE("Box move construction", "[constructor]") {
         REQUIRE(b1.getMax() == p);
 }
 
+TEST_CASE("Box area calculation", "[area]") {
+        glm::vec3 min{1.0, 1.0, 1.0};
+        glm::vec3 max{5.0, 5.0, 5.0};
+        Box b{min, max};
+        REQUIRE(b.area() == Approx(96.0));
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);

@@ -35,7 +35,10 @@ glm::vec3 Box::getMax() const {
 }
 
 /* virtual */ double Box::area() const {
-        return 0.0;
+        return (2 * (((max_.y - min_.y) * (max_.x - min_.x)) + 
+                (((max_.y - min_.y) * (max_.z - min_.z)) + 
+                        ((max_.x - min_.x) * (max_.z - min_.z)))));
+        // x = depth = b, y =  width = a, z = height = c
 }
 
 /* virtual */ double Box::volume() const {
