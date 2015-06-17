@@ -33,3 +33,11 @@ glm::vec3 Box::getMin() const {
 glm::vec3 Box::getMax() const {
         return max_;
 }
+
+/* virtual */ double area() const {
+        return 0.0;
+}
+
+/* virtual */ double volume() const {
+        return 0.0;
+}
