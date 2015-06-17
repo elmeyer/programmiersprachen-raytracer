@@ -11,6 +11,7 @@ public:
         Sphere(Sphere const& s); // copy constructor
         Sphere(Sphere&& s); // move constructor, copy & swap
         Sphere(glm::vec3 const& c, double r);
+        Sphere(double r);
 
         friend void swap(Sphere & s1, Sphere & s2);
         

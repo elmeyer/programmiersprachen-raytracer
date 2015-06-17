@@ -21,6 +21,11 @@ Sphere::Sphere(glm::vec3 const& c, double r):
         radius_{r}
         {}
 
+Sphere::Sphere(double r):
+        center_{0.0, 0.0, 0.0},
+        radius_{r}
+        {}
+
 friend void Sphere::swap(Sphere & s1, Sphere & s2) {
         std::swap(s1.center_, s2.center_);
         std::swap(s1.radius_, s2.radius_);
