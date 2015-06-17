@@ -66,6 +66,15 @@ TEST_CASE("Box construction", "[constructor]") {
         REQUIRE(b.getMax() == max);
 }
 
+TEST_CASE("Box copy construction", "[constructor]") {
+        glm::vec3 min{1.0, 1.0, 1.0};
+        glm::vec3 max{5.0, 5.0, 5.0};
+        Box b1{min, max};
+        Box b2(b1);
+        REQUIRE(b2.getMin() == b1.getMin());
+        REQUIRE(b2.getMax() == b2.getMax());       
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
