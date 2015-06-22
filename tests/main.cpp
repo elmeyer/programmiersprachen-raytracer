@@ -17,19 +17,6 @@ TEST_CASE("Sphere construction", "[constructor]") {
         REQUIRE(s.getCenter() == c);
 }
 
-TEST_CASE("Sphere radius-only construction", "[constructor]") {
-        Sphere s{5.0};
-        glm::vec3 c{0.0, 0.0, 0.0};
-        REQUIRE(s.getRadius() == 5.0);
-        REQUIRE(s.getCenter() == c);
-}
-
-TEST_CASE("Sphere copy construction", "[constructor]") {
-        Sphere s1{5.0};
-        Sphere s2(s1);
-        REQUIRE(s2.getRadius() == s1.getRadius());
-        REQUIRE(s2.getCenter() == s1.getCenter());
-}
 /*
 TEST_CASE("Sphere move construction", "[constructor]") {
         Sphere s1{5.0};
@@ -64,15 +51,6 @@ TEST_CASE("Box construction", "[constructor]") {
         Box b{min, max};
         REQUIRE(b.getMin() == min);
         REQUIRE(b.getMax() == max);
-}
-
-TEST_CASE("Box copy construction", "[constructor]") {
-        glm::vec3 min{1.0, 1.0, 1.0};
-        glm::vec3 max{5.0, 5.0, 5.0};
-        Box b1{min, max};
-        Box b2(b1);
-        REQUIRE(b2.getMin() == b1.getMin());
-        REQUIRE(b2.getMax() == b2.getMax());       
 }
 /*
 TEST_CASE("Box move construction", "[constructor]") {
