@@ -1,110 +1,98 @@
 #include "sphere.hpp"
+#include <string>
 
 Sphere::Sphere(): // default constructor
+        Shape(),
         center_{0.0, 0.0, 0.0},
-        radius_{0.0},
-        name_{},
-        Color{0.0, 0.0, 0.0}
+        radius_{0.0}
         {}
 
 Sphere::Sphere(Sphere const& s): // copy constructor
+        Shape(s.getName(), s.getColor()),
         center_{s.center_},
-        radius_{s.radius_},
-        name_{s.name_},
-        color_{s.color_}
+        radius_{s.radius_}
         {}
-
+/*
 Sphere::Sphere(Sphere&& s): // move constructor, copy & swap
         Sphere()
         {
                 swap(*this, s);
         }
-
+*/
 Sphere::Sphere(std::string const& name):
+        Shape(name),
         center_{0.0, 0.0, 0.0},
-        radius_{0.0},
-        name_{name},
-        Color{0.0, 0.0, 0.0}
+        radius_{0.0}
         {}
 
-Sphere::Sphere(Color const& c):
+Sphere::Sphere(Color const& color):
+        Shape(color),
         center_{0.0, 0.0, 0.0},
-        radius_{0.0},
-        name_{},
-        Color{c}
+        radius_{0.0}
         {}
 
-Sphere(std::string const& name, Color const& c):
+Sphere::Sphere(std::string const& name, Color const& color):
+        Shape(name, color),
         center_{0.0, 0.0, 0.0},
-        radius_{0.0},
-        name_{name},
-        Color{c}
+        radius_{0.0}
         {}
 
 Sphere::Sphere(glm::vec3 const& c, double r):
+        Shape(),
         center_{c},
-        radius_{r},
-        name_{},
-        Color{0.0, 0.0, 0.0}
+        radius_{r}
         {}
 
 Sphere::Sphere(glm::vec3 const& c, double r, std::string const& name):
+        Shape(name),
         center_{c},
-        radius_{r},
-        name_{name},
-        Color{0.0, 0.0, 0.0}
+        radius_{r}
         {}
 
-Sphere::Sphere(glm::vec3 const& c, double r, Color const& c):
+Sphere::Sphere(glm::vec3 const& c, double r, Color const& color):
+        Shape(color),
         center_{c},
-        radius_{r},
-        name_{},
-        Color{c}
+        radius_{r}
         {}
 
 Sphere::Sphere(glm::vec3 const& c, double r, std::string const& name,
-                Color const& c):
+                Color const& color):
+        Shape(name, color),
         center_{c},
-        radius_{r},
-        name_{name},
-        Color{c}
+        radius_{r}
         {}
 
 Sphere::Sphere(double r):
+        Shape(),
         center_{0.0, 0.0, 0.0},
-        radius_{r},
-        name_{},
-        Color{0.0, 0.0, 0.0}
+        radius_{r}
         {}
 
 Sphere::Sphere(double r, std::string const& name):
+        Shape(name),
         center_{0.0, 0.0, 0.0},
-        radius_{r},
-        name_{name},
-        Color{0.0, 0.0, 0.0}
+        radius_{r}
         {}
 
-Sphere::Sphere(double r, Color const& c):
+Sphere::Sphere(double r, Color const& color):
+        Shape(color),
         center_{0.0, 0.0, 0.0},
-        radius_{r},
-        name_{},
-        Color{c}
+        radius_{r}
         {}
 
-Sphere::Sphere(double r, std::string const& name, Color const& c):
+Sphere::Sphere(double r, std::string const& name, Color const& color):
+        Shape(name, color),
         center_{0.0, 0.0, 0.0},
-        radius_{r},
-        name_{name},
-        Color{c}
+        radius_{r}
         {}
-
+/*
 void Sphere::swap(Sphere & s1, Sphere & s2) {
         std::swap(s1.center_, s2.center_);
         std::swap(s1.radius_, s2.radius_);
         std::swap(s1.name_, s2.name_);
         std::swap(s1.color_, s2.color_);
 }
-
+*/
 double Sphere::getRadius() const {
         return radius_;
 }
