@@ -12,8 +12,17 @@ public:
         Box(Box const& b); // copy constructor
         Box(Box&& b); // move constructor, copy & swap
         Box(glm::vec3 const& min, glm::vec3 const& max);
+        Box(std::string const& name);
+        Box(Color const& color);
+        Box(std::string const& name, Color const& color);
+        Box(glm::vec3 const& min, glm::vec3 const& max,
+                std::string const& name);
+        Box(glm::vec3 const& min, glm::vec3 const& max,
+                Color const& color);
+        Box(glm::vec3 const& min, glm::vec3 const& max,
+                std::string const& name, Color const& color);
 
-        void swap(Box & b1, Box & b2);
+        // void swap(Box & b1, Box & b2);
 
         glm::vec3 getMin() const;
 
