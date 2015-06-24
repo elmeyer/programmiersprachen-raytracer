@@ -33,6 +33,8 @@ public:
         /* virtual */ double area() const;
 
         /* virtual */ double volume() const;
+
+        /* virtual */ std::ostream& print(std::ostream& os) const;
 private:
         glm::vec3 center_;
         double radius_;

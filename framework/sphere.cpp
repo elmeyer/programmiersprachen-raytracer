@@ -108,3 +108,10 @@ glm::vec3 Sphere::getCenter() const {
 /* virtual */ double Sphere::volume() const {
         return ((4.0/3.0) * M_PI * radius_ * radius_ * radius_);
 }
+
+/* virtual */ std::ostream& Sphere::print(std::ostream& os) const {
+        os << "Sphere " << getName() << ", Center (" << center_.x << "," 
+                << center_.y << "," << center_.z << "), Radius " << radius_ 
+                << ", ColorRGB " << getColor();
+        return os;
+}
