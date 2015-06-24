@@ -29,12 +29,11 @@ Color Shape::getColor() const {
 }
 
 std::ostream& Shape::print(std::ostream& os) const {
-        os << "Shape " << name_ << ", RGB: {" << color_.r << ", " << color_.g
-        << ", " << color_.b << "}";
+        os << "Shape " << name_ << ", RGB: " << color_;
         return os;
 }
 
-std::ostream& operator<<(std::ostream& os, Shape const& s) {
+/* virtual */ std::ostream& operator<<(std::ostream& os, Shape const& s) {
         s.print(os);
         return os;
 }
