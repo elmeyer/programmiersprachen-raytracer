@@ -1,5 +1,4 @@
 #define CATCH_CONFIG_RUNNER
-#include <iostream>
 #include <catch.hpp>
 #include "sphere.hpp"
 #include "box.hpp"
@@ -96,9 +95,14 @@ TEST_CASE("Box volume calculation", "[volume]") {
         REQUIRE(b.volume() == Approx(64.0));
 }
 
-TEST_CASE("Printing a Shape", "[<<]") {
+TEST_CASE("Printing a Sphere", "[<<]") {
         Sphere s("Test", Color{0.0, 1.0, 0.0});
         std::cout << s << std::endl;
+}
+
+TEST_CASE("Printing a Box", "[<<]") {
+        Box b("Test", Color{0.0, 1.0, 0.0});
+        std::cout << b << std::endl;
 }
 
 int main(int argc, char *argv[])
