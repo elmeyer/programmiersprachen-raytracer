@@ -86,3 +86,10 @@ glm::vec3 Box::getMax() const {
 /* virtual */ double Box::volume() const {
         return ((max_.y - min_.y) * (max_.x - min_.x) * (max_.z - min_.z));
 }
+
+/* virtual */ std::ostream& Box::print(std::ostream& os) const {
+        os << "Box " << getName() << ", Minimum (" << min_.x << "," << min_.y
+                << "," << min_.z << "), Maximum (" << max_.x << "," << max_.y
+                << "," << max_.z << "), ColorRGB " << getColor();
+        return os;
+}
