@@ -127,6 +127,47 @@ TEST_CASE("intersectRaySphere", "[intersect]") {
         REQUIRE(distance == Approx(4.0f));
 }
 
+TEST_CASE("intersect", "[intersect]") {
+    Ray r{{0.0,0.0,0.0}, {0.0,0.0,1.0}};
+    Sphere s{glm::vec3{0.0,0.0,5.0}, 1.0};
+    REQUIRE(s.intersect(r) == true);
+}
+
+TEST_CASE("shared_ptrs") {
+    Color red(255, 0, 0);
+    glm::vec3 position(0.0);
+
+    std::cout << "-----------" << "\n";
+    std::cout << "Aufgabe 6.7" << "\n";
+    std::cout << "-----------" << std::endl;
+
+    std::shared_ptr<Sphere> s1 =
+        std::make_shared<Sphere>(position, 1.2, "sphere0", red);
+    std::shared_ptr<Shape> s2 =
+        std::make_shared<Sphere>(position, 1.2, "sphere1", red);
+
+    s1->print(std::cout);
+    s2->print(std::cout);
+}
+
+TEST_CASE("virtual destructor", "[virtual]") {
+    Color red(255, 0, 0);
+    glm::vec3 position(0.0);
+
+    std::cout << "-----------" << "\n";
+    std::cout << "Aufgabe 6.8" << "\n";
+    std::cout << "-----------" << std::endl;
+
+    Sphere* s1 = new Sphere(position, 1.2, "sphere0", red);
+    Shape* s2 = new Sphere(position, 1.2, "sphere0", red);
+
+    s1->print(std::cout);
+    s2->print(std::cout);
+
+    delete s1;
+    delete s2;
+}
+
 int main(int argc, char *argv[])
 {
   return Catch::Session().run(argc, argv);
