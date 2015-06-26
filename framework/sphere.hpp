@@ -4,11 +4,15 @@
 #include <utility>
 #include <math.h>
 #include <glm/vec3.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtx/intersect.hpp>
 #include "shape.hpp"
+#include "ray.hpp"
 
 class Sphere: public Shape {
 public:
         Sphere(); // default constructor
+        ~Sphere(); // destructor
         Sphere(Sphere const& s); // copy constructor
         // Sphere(Sphere&& s); // move constructor, copy & swap
         Sphere(std::string const& name);
@@ -35,6 +39,8 @@ public:
         /* virtual */ double volume() const;
 
         /* virtual */ std::ostream& print(std::ostream& os) const;
+
+        bool intersect(Ray const& r) const;
 private:
         glm::vec3 center_;
         double radius_;
