@@ -5,6 +5,7 @@
 #include <math.h>
 #include <glm/vec3.hpp>
 #include "shape.hpp"
+#include "ray.hpp"
 
 class Box: public Shape {
 public:
@@ -33,6 +34,8 @@ public:
         /* virtual */ double volume() const;
 
         /* virtual */ std::ostream& print(std::ostream& os) const;
+
+        bool intersect(Ray const& r) const;
 private:
         glm::vec3 min_;
         glm::vec3 max_;

@@ -93,3 +93,7 @@ glm::vec3 Box::getMax() const {
                 << "," << max_.z << "), ColorRGB " << getColor();
         return os;
 }
+
+bool Box::intersect(Ray const& r) const {
+        // not implemented yet
+}
