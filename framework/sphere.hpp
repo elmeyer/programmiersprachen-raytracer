@@ -40,7 +40,7 @@ public:
 
         /* virtual */ std::ostream& print(std::ostream& os) const;
 
-        bool intersect(Ray const& r) const;
+        bool intersect(Ray const& r, float & d) const;
 private:
         glm::vec3 center_;
         double radius_;

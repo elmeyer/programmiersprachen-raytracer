@@ -130,7 +130,11 @@ TEST_CASE("intersectRaySphere", "[intersect]") {
 TEST_CASE("intersect", "[intersect]") {
     Ray r{{0.0,0.0,0.0}, {0.0,0.0,1.0}};
     Sphere s{glm::vec3{0.0,0.0,5.0}, 1.0};
-    REQUIRE(s.intersect(r) == true);
+    
+    float distance(0.0);
+
+    REQUIRE(s.intersect(r, distance) == true);
+    REQUIRE(distance == Approx(4.0f));
 }
 
 TEST_CASE("shared_ptrs") {
@@ -159,7 +163,7 @@ TEST_CASE("virtual destructor", "[virtual]") {
     std::cout << "-----------" << std::endl;
 
     Sphere* s1 = new Sphere(position, 1.2, "sphere0", red);
-    Shape* s2 = new Sphere(position, 1.2, "sphere0", red);
+    Shape* s2 = new Sphere(position, 1.2, "sphere1", red);
 
     s1->print(std::cout);
     s2->print(std::cout);
