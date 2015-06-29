@@ -68,11 +68,11 @@ void Box::swap(Box & b1, Box & b2) {
         std::swap(b1.max_, b2.max_);
 }
 */
-glm::vec3 Box::getMin() const {
+glm::vec3 const& Box::getMin() const {
         return min_;
 }
 
-glm::vec3 Box::getMax() const {
+glm::vec3 const& Box::getMax() const {
         return max_;
 }
 

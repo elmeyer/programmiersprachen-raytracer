@@ -24,20 +24,20 @@ Shape::Shape(std::string const& name, Color const& color):
         color_{color}
         {std::cout << "Construct a Shape!" << "\n";}
 
-std::string Shape::getName() const {
+std::string const& Shape::getName() const {
         return name_;
 }
 
-Color Shape::getColor() const {
+Color const& Shape::getColor() const {
         return color_;
 }
 
-std::ostream& Shape::print(std::ostream& os) const {
+/* virtual */ std::ostream& Shape::print(std::ostream& os) const {
         os << "Shape " << name_ << ", RGB: " << color_;
         return os;
 }
 
-/* virtual */ std::ostream& operator<<(std::ostream& os, Shape const& s) {
+std::ostream& operator<<(std::ostream& os, Shape const& s) {
         s.print(os);
         return os;
 }

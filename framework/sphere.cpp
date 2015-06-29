@@ -124,5 +124,5 @@ bool Sphere::intersect(Ray const& r, float & d) const {
         auto v = glm::normalize(r.direction);
 
         return glm::intersectRaySphere(r.origin, v, center_,
-                radius_, d);
+                radius_*radius_, d);
 }
