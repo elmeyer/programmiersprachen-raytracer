@@ -21,6 +21,7 @@
 *.app
 
 checkerboard.ppm
+.DS_Store
 
 build
 cmake_out
