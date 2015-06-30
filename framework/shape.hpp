@@ -3,18 +3,18 @@
 
 #include <iostream>
 #include <string>
-#include "color.hpp"
+#include "material.hpp"
 
 class Shape {
 public:
         Shape();
         /* virtual */ ~Shape();
         Shape(std::string const& name);
-        Shape(Color const& color);
-        Shape(std::string const& name, Color const& color);
+        Shape(Material const& material);
+        Shape(std::string const& name, Material const& material);
 
         std::string const& getName() const;
-        Color const& getColor() const;
+        Material const& getMaterial() const;
 
         virtual double area() const = 0;
         virtual double volume() const = 0;
@@ -22,7 +22,7 @@ public:
         virtual std::ostream& print(std::ostream& os) const;
 private:
         std::string name_;
-        Color color_;
+        Material material_;
 };
 
 std::ostream& operator<<(std::ostream& os, Shape const& s);

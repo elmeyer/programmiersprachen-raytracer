@@ -2,7 +2,7 @@
 
 Shape::Shape():
         name_{},
-        color_{0.0, 0.0, 0.0}
+        material_{}
         {std::cout << "Construct a Shape!" << "\n";}
 
 /* virtual */ Shape::~Shape() {
@@ -11,29 +11,29 @@ Shape::Shape():
 
 Shape::Shape(std::string const& name):
         name_{name},
-        color_{1.0, 1.0, 1.0}
+        material_{}
         {std::cout << "Construct a Shape!" << "\n";}
 
-Shape::Shape(Color const& color):
+Shape::Shape(Material const& material):
         name_{},
-        color_{color}
+        material_{material}
         {std::cout << "Construct a Shape!" << "\n";}
 
-Shape::Shape(std::string const& name, Color const& color):
+Shape::Shape(std::string const& name, Material const& material):
         name_{name},
-        color_{color}
+        material_{material}
         {std::cout << "Construct a Shape!" << "\n";}
 
 std::string const& Shape::getName() const {
         return name_;
 }
 
-Color const& Shape::getColor() const {
-        return color_;
+Material const& Shape::getMaterial() const {
+        return material_;
 }
 
 /* virtual */ std::ostream& Shape::print(std::ostream& os) const {
-        os << "Shape " << name_ << ", RGB: " << color_ << "\n";
+        os << "Shape " << name_ << "\n" << material_;
         return os;
 }
 

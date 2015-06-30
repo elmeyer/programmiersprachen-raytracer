@@ -12,7 +12,7 @@ Sphere::Sphere(): // default constructor
 }
 
 Sphere::Sphere(Sphere const& s): // copy constructor
-        Shape(s.getName(), s.getColor()),
+        Shape(s.getName(), s.getMaterial()),
         center_{s.center_},
         radius_{s.radius_}
         {std::cout << "Construct a Sphere!" << "\n";}
@@ -29,14 +29,14 @@ Sphere::Sphere(std::string const& name):
         radius_{0.0}
         {std::cout << "Construct a Sphere!" << "\n";}
 
-Sphere::Sphere(Color const& color):
-        Shape(color),
+Sphere::Sphere(Material const& material):
+        Shape(material),
         center_{0.0, 0.0, 0.0},
         radius_{0.0}
         {std::cout << "Construct a Sphere!" << "\n";}
 
-Sphere::Sphere(std::string const& name, Color const& color):
-        Shape(name, color),
+Sphere::Sphere(std::string const& name, Material const& material):
+        Shape(name, material),
         center_{0.0, 0.0, 0.0},
         radius_{0.0}
         {std::cout << "Construct a Sphere!" << "\n";}
@@ -53,15 +53,15 @@ Sphere::Sphere(glm::vec3 const& c, double r, std::string const& name):
         radius_{r}
         {std::cout << "Construct a Sphere!" << "\n";}
 
-Sphere::Sphere(glm::vec3 const& c, double r, Color const& color):
-        Shape(color),
+Sphere::Sphere(glm::vec3 const& c, double r, Material const& material):
+        Shape(material),
         center_{c},
         radius_{r}
         {std::cout << "Construct a Sphere!" << "\n";}
 
 Sphere::Sphere(glm::vec3 const& c, double r, std::string const& name,
-                Color const& color):
-        Shape(name, color),
+                Material const& material):
+        Shape(name, material),
         center_{c},
         radius_{r}
         {std::cout << "Construct a Sphere!" << "\n";}
@@ -78,14 +78,14 @@ Sphere::Sphere(double r, std::string const& name):
         radius_{r}
         {std::cout << "Construct a Sphere!" << "\n";}
 
-Sphere::Sphere(double r, Color const& color):
-        Shape(color),
+Sphere::Sphere(double r, Material const& material):
+        Shape(material),
         center_{0.0, 0.0, 0.0},
         radius_{r}
         {std::cout << "Construct a Sphere!" << "\n";}
 
-Sphere::Sphere(double r, std::string const& name, Color const& color):
-        Shape(name, color),
+Sphere::Sphere(double r, std::string const& name, Material const& material):
+        Shape(name, material),
         center_{0.0, 0.0, 0.0},
         radius_{r}
         {std::cout << "Construct a Sphere!" << "\n";}
@@ -116,7 +116,7 @@ glm::vec3 const& Sphere::getCenter() const {
 /* virtual */ std::ostream& Sphere::print(std::ostream& os) const {
         os << "Sphere " << getName() << ", Center (" << center_.x << "," 
                 << center_.y << "," << center_.z << "), Radius " << radius_ 
-                << ", ColorRGB " << getColor();
+                << "\n" << getMaterial();
         return os;
 }
 

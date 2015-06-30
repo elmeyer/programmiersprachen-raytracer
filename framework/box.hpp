@@ -11,17 +11,17 @@ class Box: public Shape {
 public:
         Box(); // default constructor
         Box(Box const& b); // copy constructor
-        Box(Box&& b); // move constructor, copy & swap
+        // Box(Box&& b); // move constructor, copy & swap
         Box(glm::vec3 const& min, glm::vec3 const& max);
         Box(std::string const& name);
-        Box(Color const& color);
-        Box(std::string const& name, Color const& color);
+        Box(Material const& material);
+        Box(std::string const& name, Material const& material);
         Box(glm::vec3 const& min, glm::vec3 const& max,
                 std::string const& name);
         Box(glm::vec3 const& min, glm::vec3 const& max,
-                Color const& color);
+                Material const& material);
         Box(glm::vec3 const& min, glm::vec3 const& max,
-                std::string const& name, Color const& color);
+                std::string const& name, Material const& material);
 
         // void swap(Box & b1, Box & b2);
 

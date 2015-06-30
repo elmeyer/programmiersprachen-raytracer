@@ -7,7 +7,7 @@ Box::Box(): // default constructor
         {}
 
 Box::Box(Box const& b): // copy constructor
-        Shape(b.getName(), b.getColor()),
+        Shape(b.getName(), b.getMaterial()),
         min_{b.min_},
         max_{b.max_}
         {}
@@ -30,14 +30,14 @@ Box::Box(std::string const& name):
         max_{0.0, 0.0, 0.0}
         {}
 
-Box::Box(Color const& color):
-        Shape(color),
+Box::Box(Material const& material):
+        Shape(material),
         min_{0.0, 0.0, 0.0},
         max_{0.0, 0.0, 0.0}
         {}
 
-Box::Box(std::string const& name, Color const& color):
-        Shape(name, color),
+Box::Box(std::string const& name, Material const& material):
+        Shape(name, material),
         min_{0.0, 0.0, 0.0},
         max_{0.0, 0.0, 0.0}
         {}
@@ -50,15 +50,15 @@ Box::Box(glm::vec3 const& min, glm::vec3 const& max,
         {}
 
 Box::Box(glm::vec3 const& min, glm::vec3 const& max,
-        Color const& color):
-        Shape(color),
+        Material const& material):
+        Shape(material),
         min_{min},
         max_{max}
         {}
 
 Box::Box(glm::vec3 const& min, glm::vec3 const& max,
-        std::string const& name, Color const& color):
-        Shape(name, color),
+        std::string const& name, Material const& material):
+        Shape(name, material),
         min_{min},
         max_{max}
         {}
@@ -90,7 +90,7 @@ glm::vec3 const& Box::getMax() const {
 /* virtual */ std::ostream& Box::print(std::ostream& os) const {
         os << "Box " << getName() << ", Minimum (" << min_.x << "," << min_.y
                 << "," << min_.z << "), Maximum (" << max_.x << "," << max_.y
-                << "," << max_.z << "), ColorRGB " << getColor();
+                << "," << max_.z << ")" << "\n" << getMaterial();
         return os;
 }
 
