@@ -11,20 +11,24 @@ TEST_CASE("Sphere default construction", "[constructor]") {
         glm::vec3 c{0.0, 0.0, 0.0};
         REQUIRE(s.getRadius() == 0.0);
         REQUIRE(s.getCenter() == c);
+        /*
         REQUIRE(s.getColor().r == 0.0);
         REQUIRE(s.getColor().g == 0.0);
         REQUIRE(s.getColor().b == 0.0);
+        */
         REQUIRE(s.getName() == "");
 }
 
 TEST_CASE("Sphere construction", "[constructor]") {
         glm::vec3 c{1.0, 1.0, 1.0};
-        Sphere s{c, 5.0, "Sphere", Color{1.0, 1.0, 1.0}};
+        Sphere s{c, 5.0, "Sphere"};
         REQUIRE(s.getRadius() == 5.0);
         REQUIRE(s.getCenter() == c);
+        /*
         REQUIRE(s.getColor().r == 1.0);
         REQUIRE(s.getColor().g == 1.0);
         REQUIRE(s.getColor().b == 1.0);
+        */
         REQUIRE(s.getName() == "Sphere");
 }
 
@@ -54,21 +58,25 @@ TEST_CASE("Box default construction", "[constructor]") {
         glm::vec3 p{0.0, 0.0, 0.0};
         REQUIRE(b.getMin() == p);
         REQUIRE(b.getMax() == p);
+        /*
         REQUIRE(b.getColor().r == 0.0);
         REQUIRE(b.getColor().g == 0.0);
         REQUIRE(b.getColor().b == 0.0);
+        */
         REQUIRE(b.getName() == "");
 }
 
 TEST_CASE("Box construction", "[constructor]") {
         glm::vec3 min{1.0, 1.0, 1.0};
         glm::vec3 max{5.0, 5.0, 5.0};
-        Box b{min, max, "Box", Color{1.0, 1.0, 1.0}};
+        Box b{min, max, "Box"};
         REQUIRE(b.getMin() == min);
         REQUIRE(b.getMax() == max);
+        /*
         REQUIRE(b.getColor().r == 1.0);
         REQUIRE(b.getColor().g == 1.0);
         REQUIRE(b.getColor().b == 1.0);
+        */
         REQUIRE(b.getName() == "Box");
 }
 /*
@@ -99,12 +107,12 @@ TEST_CASE("Box volume calculation", "[volume]") {
 }
 
 TEST_CASE("Printing a Sphere", "[<<]") {
-        Sphere s("Test", Color{0.0, 1.0, 0.0});
+        Sphere s("Test");
         std::cout << s << std::endl;
 }
 
 TEST_CASE("Printing a Box", "[<<]") {
-        Box b("Test", Color{0.0, 1.0, 0.0});
+        Box b("Test");
         std::cout << b << std::endl;
 }
 
@@ -137,7 +145,7 @@ TEST_CASE("intersect", "[intersect]") {
     REQUIRE(s.intersect(r, distance) == true);
     REQUIRE(distance == Approx(4.0f));
 }
-
+/*
 TEST_CASE("shared_ptrs") {
     Color red(255, 0, 0);
     glm::vec3 position(0.0);
@@ -172,7 +180,7 @@ TEST_CASE("virtual destructor", "[virtual]") {
     delete s1;
     delete s2;
 }
-
+*/
 TEST_CASE("Material printing", "[<<]") {
     Material m{"Testmaterial", Color{1,0,0}, Color{0,1,0}, Color{0,0,1}, 15};
     std::cout << m << std::endl;
