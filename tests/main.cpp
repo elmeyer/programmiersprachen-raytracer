@@ -2,6 +2,7 @@
 #include <catch.hpp>
 #include "sphere.hpp"
 #include "box.hpp"
+#include "material.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 
@@ -170,6 +171,11 @@ TEST_CASE("virtual destructor", "[virtual]") {
 
     delete s1;
     delete s2;
+}
+
+TEST_CASE("Material printing", "[<<]") {
+    Material m{"Testmaterial", Color{1,0,0}, Color{0,1,0}, Color{0,0,1}, 15};
+    std::cout << m << std::endl;
 }
 
 int main(int argc, char *argv[])
