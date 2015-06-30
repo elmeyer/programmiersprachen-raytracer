@@ -3,8 +3,10 @@
 #include "sphere.hpp"
 #include "box.hpp"
 #include "material.hpp"
+#include "sdfloader.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
+#include <fstream>
 
 TEST_CASE("Sphere default construction", "[constructor]") {
         Sphere s{};
@@ -137,13 +139,13 @@ TEST_CASE("intersectRaySphere", "[intersect]") {
 }
 
 TEST_CASE("intersect", "[intersect]") {
-    Ray r{{0.0,0.0,0.0}, {0.0,0.0,1.0}};
-    Sphere s{glm::vec3{0.0,0.0,5.0}, 1.0};
-    
-    float distance(0.0);
+        Ray r{{0.0,0.0,0.0}, {0.0,0.0,1.0}};
+        Sphere s{glm::vec3{0.0,0.0,5.0}, 1.0};
+        
+        float distance(0.0);
 
-    REQUIRE(s.intersect(r, distance) == true);
-    REQUIRE(distance == Approx(4.0f));
+        REQUIRE(s.intersect(r, distance) == true);
+        REQUIRE(distance == Approx(4.0f));
 }
 /*
 TEST_CASE("shared_ptrs") {
@@ -182,11 +184,17 @@ TEST_CASE("virtual destructor", "[virtual]") {
 }
 */
 TEST_CASE("Material printing", "[<<]") {
-    Material m{"Testmaterial", Color{1,0,0}, Color{0,1,0}, Color{0,0,1}, 15};
-    std::cout << m << std::endl;
+        Material m{"Testmaterial", Color{1,0,0}, Color{0,1,0}, Color{0,0,1}, 15};
+        std::cout << m << std::endl;
 }
 
-int main(int argc, char *argv[])
-{
-  return Catch::Session().run(argc, argv);
+TEST_CASE("Loading an SDF file and printing it", "[loadSDF]") {
+        auto vec = loadSDF("materials.sdf");
+        for(auto it = vec.begin(); it != vec.end(); ++it) {
+                std::cout << *it << std::endl;
+        }
+}
+
+int main(int argc, char *argv[]) {
+        return Catch::Session().run(argc, argv);
 }
