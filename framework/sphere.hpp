@@ -30,9 +30,9 @@ public:
 
         // void swap(Sphere & s1, Sphere & s2);
         
-        double getRadius() const;
+        double const getRadius() const;
 
-        glm::vec3 getCenter() const;
+        glm::vec3 const& getCenter() const;
 
         /* virtual */ double area() const;
 

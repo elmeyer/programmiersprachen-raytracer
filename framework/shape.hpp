@@ -13,8 +13,8 @@ public:
         Shape(Color const& color);
         Shape(std::string const& name, Color const& color);
 
-        std::string getName() const;
-        Color getColor() const;
+        std::string const& getName() const;
+        Color const& getColor() const;
 
         virtual double area() const = 0;
         virtual double volume() const = 0;

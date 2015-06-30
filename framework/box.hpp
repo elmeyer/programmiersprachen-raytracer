@@ -25,9 +25,9 @@ public:
 
         // void swap(Box & b1, Box & b2);
 
-        glm::vec3 getMin() const;
+        glm::vec3 const& getMin() const;
 
-        glm::vec3 getMax() const;
+        glm::vec3 const& getMax() const;
 
         /* virtual */ double area() const;
 

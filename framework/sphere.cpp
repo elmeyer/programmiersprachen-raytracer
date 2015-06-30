@@ -97,11 +97,11 @@ void Sphere::swap(Sphere & s1, Sphere & s2) {
         std::swap(s1.color_, s2.color_);
 }
 */
-double Sphere::getRadius() const {
+double const Sphere::getRadius() const {
         return radius_;
 }
 
-glm::vec3 Sphere::getCenter() const {
+glm::vec3 const& Sphere::getCenter() const {
         return center_;
 }
 
