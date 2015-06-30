@@ -33,7 +33,7 @@ Color const& Shape::getColor() const {
 }
 
 /* virtual */ std::ostream& Shape::print(std::ostream& os) const {
-        os << "Shape " << name_ << ", RGB: " << color_;
+        os << "Shape " << name_ << ", RGB: " << color_ << "\n";
         return os;
 }
 

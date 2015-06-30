@@ -90,7 +90,7 @@ glm::vec3 const& Box::getMax() const {
 /* virtual */ std::ostream& Box::print(std::ostream& os) const {
         os << "Box " << getName() << ", Minimum (" << min_.x << "," << min_.y
                 << "," << min_.z << "), Maximum (" << max_.x << "," << max_.y
-                << "," << max_.z << "), ColorRGB " << getColor();
+                << "," << max_.z << "), ColorRGB " << getColor() << "\n";
         return os;
 }
 

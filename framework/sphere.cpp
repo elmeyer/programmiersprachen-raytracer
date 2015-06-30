@@ -116,7 +116,7 @@ glm::vec3 const& Sphere::getCenter() const {
 /* virtual */ std::ostream& Sphere::print(std::ostream& os) const {
         os << "Sphere " << getName() << ", Center (" << center_.x << "," 
                 << center_.y << "," << center_.z << "), Radius " << radius_ 
-                << ", ColorRGB " << getColor();
+                << ", ColorRGB " << getColor() << "\n";
         return os;
 }
 
