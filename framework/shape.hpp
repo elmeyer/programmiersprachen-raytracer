@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include <string>
+#include <glm/glm.hpp>
 #include "material.hpp"
+#include "ray.hpp"
 
 class Shape {
 public:
@@ -20,6 +22,8 @@ public:
         virtual double volume() const = 0;
 
         virtual std::ostream& print(std::ostream& os) const;
+
+        virtual bool intersect(Ray const& r, float& t) = 0; // pure virtual
 private:
         std::string name_;
         Material material_;
