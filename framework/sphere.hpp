@@ -7,7 +7,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
 #include "shape.hpp"
-#include "ray.hpp"
 
 class Sphere: public Shape {
 public:
@@ -40,7 +39,7 @@ public:
 
         /* virtual */ std::ostream& print(std::ostream& os) const;
 
-        bool intersect(Ray const& r, float & d) const;
+        bool intersect(Ray const& r, float & d);
 private:
         glm::vec3 center_;
         double radius_;

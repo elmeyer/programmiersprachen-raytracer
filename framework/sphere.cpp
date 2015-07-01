@@ -120,7 +120,7 @@ glm::vec3 const& Sphere::getCenter() const {
         return os;
 }
 
-bool Sphere::intersect(Ray const& r, float & d) const {
+bool Sphere::intersect(Ray const& r, float & d) {
         auto v = glm::normalize(r.direction);
 
         return glm::intersectRaySphere(r.origin, v, center_,
