@@ -184,15 +184,23 @@ TEST_CASE("virtual destructor", "[virtual]") {
 }
 */
 TEST_CASE("Material printing", "[<<]") {
-        Material m{"Testmaterial", Color{1,0,0}, Color{0,1,0}, Color{0,0,1}, 15};
+        Material m{"Testmaterial", Color{1,0,0}, Color{0,1,0}, Color{0,0,1},
+                    15};
         std::cout << m << std::endl;
 }
-
+/*
 TEST_CASE("Loading an SDF file and printing it", "[loadSDF]") {
         auto vec = loadSDF("materials.sdf");
         for(auto it = vec.begin(); it != vec.end(); ++it) {
                 std::cout << *it << std::endl;
         }
+}
+*/
+TEST_CASE("intersectBox", "[intersect]") {
+        Ray r{{0.0, 0.0, 0.0}, {1.0, 1.0, 1.0}};
+        Box b{glm::vec3{0.0, 0.0, 0.0}, glm::vec3{1.0, 1.0, 1.0}};
+        float t = 0;
+        REQUIRE(b.intersect(r, t) == true);
 }
 
 int main(int argc, char *argv[]) {
