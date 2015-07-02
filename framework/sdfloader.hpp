@@ -3,11 +3,10 @@
 
 #include <string>
 #include <iostream>
-#include <vector>
 #include <fstream>
 #include <sstream>
-#include "material.hpp"
+#include "scene.hpp"
 
-std::vector<Material> loadSDF(std::string const& file);
+Scene* loadSDF(std::string const& file);
 
 #endif

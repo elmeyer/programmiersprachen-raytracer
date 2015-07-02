@@ -1,7 +1,7 @@
 #include "sdfloader.hpp"
 
-std::vector<Material> loadSDF(std::string const& file) {
-        std::vector<Material> out;
+Scene* loadSDF(std::string const& file) {
+        Scene* out = new Scene;
         std::ifstream sdf;
         std::vector<std::string> lines;
         sdf.open(file);
@@ -41,7 +41,7 @@ std::vector<Material> loadSDF(std::string const& file) {
                                         std::stof(words[10]),
                                         std::stof(words[11])};
                                 float m = std::stof(words[12]);
-                                out.push_back(Material{name, ka, kd, ks, m});
+                                out->materials.push_back(Material{name, ka, kd, ks, m});
                         }
                 }
         }
