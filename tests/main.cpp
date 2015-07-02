@@ -188,14 +188,15 @@ TEST_CASE("Material printing", "[<<]") {
                     15};
         std::cout << m << std::endl;
 }
-/*
+
 TEST_CASE("Loading an SDF file and printing it", "[loadSDF]") {
-        auto vec = loadSDF("materials.sdf");
-        for(auto it = vec.begin(); it != vec.end(); ++it) {
-                std::cout << *it << std::endl;
+        auto scene = loadSDF("materials.sdf");
+        for (auto i : scene->materials) {
+            std::cout << i << "\n";
         }
+        delete scene;
 }
-*/
+
 TEST_CASE("intersectBox", "[intersect]") {
         Ray r{{0.0, 0.0, 0.0}, {1.0, 1.0, 1.0}};
         Box b{glm::vec3{0.0, 0.0, 0.0}, glm::vec3{1.0, 1.0, 1.0}};
