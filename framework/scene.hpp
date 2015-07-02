@@ -2,12 +2,18 @@
 #define BUW_SCENE_HPP
 
 #include <vector>
-#include <unordered_map>
+#include "material.hpp"
+#include "sphere.hpp"
+#include "box.hpp"
+// #include "light.hpp"
+// #include "camera.hpp"
 
 struct Scene {
         std::vector<Material> materials;
         std::vector<Sphere> spheres;
         std::vector<Box> boxes;
-        std::vector<Light> lights;
-        std::unordered_map<Camera> cameras;
+        // std::vector<Light> lights;
+        // Camera camera;
 };
+
+#endif
