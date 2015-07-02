@@ -39,7 +39,7 @@ float const Material::getM() const {
 
 std::ostream& operator<<(std::ostream& os, Material const& m) {
         os << "--------" << "\n" << "Material " << "\n" << "--------" << "\n" 
-                << "Name: " << m.getName() << "\n" << "Colors (RGB):" << "\n" 
+                << "Name: " << m.getName() << "\n" << "Light coefficients:" << "\n" 
                 << "        ka: " << m.getColorKa() << "        kd: " 
                 << m.getColorKd() << "        ks: " << m.getColorKs() 
                 << "m: " << m.getM();
