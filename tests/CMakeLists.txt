@@ -9,7 +9,7 @@ add_dependencies(tests glfw ${FRAMEWORK_NAME} ${COPY_BINARY})
 
 add_custom_command(
   TARGET tests POST_BUILD
-  COMMAND ctest -C tests
+  COMMAND ctest -C $<CONFIGURATION>
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   COMMENT "Running tests"
   )
