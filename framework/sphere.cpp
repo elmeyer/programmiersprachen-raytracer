@@ -1,6 +1,8 @@
 #include "sphere.hpp"
 #include <string>
 
+double M_PI = 3.14159;
+
 Sphere::Sphere(): // default constructor
         Shape(),
         center_{0.0, 0.0, 0.0},
