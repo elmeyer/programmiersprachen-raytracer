@@ -1,5 +1,6 @@
 #ifndef BUW_SHAPE_HPP
 #define BUW_SHAPE_HPP
+#define _USE_MATH_DEFINES
 
 #include <iostream>
 #include <string>
