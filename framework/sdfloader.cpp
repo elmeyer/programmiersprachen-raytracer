@@ -17,7 +17,10 @@ Scene* loadSDF(std::string const& file) {
                 return out;
         }
 
+        int i = 0;
+
         for (auto line : lines) {
+                i++;
                 std::stringstream stream(line);
                 std::string word;
                 std::vector<std::string> words;
@@ -28,9 +31,8 @@ Scene* loadSDF(std::string const& file) {
 
                 if(words[0] == "#") {}
                 
-                if(words[0] == "define") {
+                else if(words[0] == "define") {
                         if(words[1] == "material") {
-                                std::string name = words[2];
                                 Color ka{std::stof(words[3]), 
                                         std::stof(words[4]),
                                         std::stof(words[5])};
@@ -40,10 +42,76 @@ Scene* loadSDF(std::string const& file) {
                                 Color ks{std::stof(words[9]), 
                                         std::stof(words[10]),
                                         std::stof(words[11])};
-                                float m = std::stof(words[12]);
-                                out->materials.push_back(Material{name, ka, kd, ks, m});
+                                out->materials[words[2]] = Material{words[2],
+                                        ka, kd, ks, std::stof(words[12])};
+                        }
+                        else if(words[1] == "shape") {
+                                if(words[2] == "sphere") {
+                                        glm::vec3 center{std::stof(words[4]),
+                                                std::stof(words[5]),
+                                                std::stof(words[6])};
+                                        out->shapes.push_back(new Sphere{center,
+                                                std::stof(words[7]), words[3],
+                                                out->materials[words[8]]});
+                                }
+                                else if(words[2] == "box") {
+                                        glm::vec3 min{std::stof(words[4]),
+                                                std::stof(words[5]),
+                                                std::stof(words[6])};
+                                        glm::vec3 max{std::stof(words[7]),
+                                                std::stof(words[8]),
+                                                std::stof(words[9])};
+                                        out->shapes.push_back(new Box{min, max,
+                                                words[3],
+                                                out->materials[words[10]]});
+                                }
+                                else {
+                                        std::cout << "Syntax error in line " << 
+                                        i << "!" << std::endl;
+                                        std::cout << "Unknown object: " <<
+                                        words[2] << std::endl;
+                                }
+                        }
+                        /*
+                        else if(words[1] == "light") {
+                                glm::vec3 pos{std::stof(words[3]),
+                                        std::stof(words[4]),
+                                        std::stof(words[5])};
+                                Color La{std::stof(words[6]),
+                                        std::stof(words[7]),
+                                        std::stof(words[8])};
+                                Color Ld{std::stof(words[9]),
+                                        std::stof(words[10]),
+                                        std::stof(words[11])};
+                                out->lights.push_back(Light{words[3], pos, La,
+                                        Ld});
+                        }
+                        */
+                        else {
+                                std::cout << "Syntax error in line " << i <<
+                                "!" << std::endl;
+                                std::cout << "Unknown object: " << words[1] <<
+                                std::endl;
                         }
                 }
+                /*
+                else if(words[0] == "camera") {
+                        out->camera.name = words[1];
+                        out->camera.fov-x = std::stof(words[2]);
+                }
+
+                else if(words[0] == "render") {
+                        ----
+                        TODO: write parser for rendering
+                        ----
+                }
+                */
+                else {
+                        std::cout << "Syntax error in line " << i << "!" <<
+                        std::endl;
+                        std::cout << "Unknown object: " << words[0] <<
+                        std::endl;
+                }       
         }
         return out;
 }
