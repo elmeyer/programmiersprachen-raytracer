@@ -2,6 +2,7 @@
 #define BUW_SCENE_HPP
 
 #include <vector>
+#include <map>
 #include "material.hpp"
 #include "sphere.hpp"
 #include "box.hpp"
@@ -9,9 +10,8 @@
 // #include "camera.hpp"
 
 struct Scene {
-        std::vector<Material> materials;
-        std::vector<Sphere> spheres;
-        std::vector<Box> boxes;
+        std::map<std::string, Material> materials;
+        std::vector<Shape*> shapes;
         // std::vector<Light> lights;
         // Camera camera;
 };
