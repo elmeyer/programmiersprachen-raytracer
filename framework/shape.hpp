@@ -1,35 +1,33 @@
 #ifndef BUW_SHAPE_HPP
 #define BUW_SHAPE_HPP
-#define _USE_MATH_DEFINES
 
-#include <iostream>
-#include <string>
-#include <glm/glm.hpp>
 #include "material.hpp"
 #include "ray.hpp"
+#include <glm/glm.hpp>
+#include <string>
+#include <iostream>
 
-class Shape {
-public:
-        Shape();
-        /* virtual */ ~Shape();
-        Shape(std::string const& name);
-        Shape(Material const& material);
-        Shape(std::string const& name, Material const& material);
+class Shape
+{
+  public:
+    Shape(); // default constructor
+    Shape(std::string const& name);
+    Shape(Material const& mat);
+    Shape(std::string const& name, Material const& mat);
 
-        std::string const& getName() const;
-        Material const& getMaterial() const;
+    virtual std::string const& name() const; // getter
+    virtual Material const& mat() const; // getter
+    virtual float area() const = 0; // pure virtual
+    virtual float volume() const = 0; // pure virual
+    virtual bool intersect(Ray const& r, float& t) = 0; // pure virtual
 
-        virtual double area() const = 0;
-        virtual double volume() const = 0;
+    virtual std::ostream& print(std::ostream& os) const;
 
-        virtual std::ostream& print(std::ostream& os) const;
-
-        virtual bool intersect(Ray const& r, float& t) = 0; // pure virtual
-private:
-        std::string name_;
-        Material material_;
+  protected:
+    std::string name_;
+    Material mat_;
 };
 
 std::ostream& operator<<(std::ostream& os, Shape const& s);
 
-#endif
+#endif // BUW_SHAPE_HPP

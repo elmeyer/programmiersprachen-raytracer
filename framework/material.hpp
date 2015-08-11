@@ -5,25 +5,26 @@
 #include <string>
 #include <iostream>
 
-class Material {
-public:
-        Material();
-        Material(std::string const& name, Color const& ka, Color const& kd,
-                Color const& ks, float m);
+class Material
+{
+  public:
+    Material(); // default constructor
+    Material(std::string const& name, Color const& ka,
+             Color const& kd, Color const& ks, float m);
+    std::string const& name() const;
+    Color const& ka() const;
+    Color const& kd() const;
+    Color const& ks() const;
+    float m() const;
 
-        std::string const& getName() const;
-        Color const& getColorKa() const;
-        Color const& getColorKd() const;
-        Color const& getColorKs() const;
-        float const getM() const;
-private:
-        std::string name;
-        Color ka;
-        Color kd;
-        Color ks;
-        float m;
+  private:
+    std::string name_;
+    Color ka_;
+    Color kd_;
+    Color ks_;
+    float m_;
 };
 
-std::ostream& operator<<(std::ostream& os, Material const& m);
+std::ostream& operator<<(std::ostream& os, Material const& mat);
 
-#endif
+#endif // BUW_MATERIAL_HPP

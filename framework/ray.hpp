@@ -1,11 +1,12 @@
 #ifndef BUW_RAY_HPP
 #define BUW_RAY_HPP
 
-#include <glm/vec3.hpp>
+#include <glm/glm.hpp>
 
-struct Ray {
-        glm::vec3 origin;
-        glm::vec3 direction;
+struct Ray
+{
+  glm::vec3 origin;
+  glm::vec3 direction;
 };
 
-#endif
+#endif //#define BUW_COLOR_HPP

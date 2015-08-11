@@ -1,43 +1,37 @@
 #include "shape.hpp"
 
-Shape::Shape():
-        name_{},
-        material_{}
-        {std::cout << "Construct a Shape!" << "\n";}
-
-/* virtual */ Shape::~Shape() {
-        std::cout << "Destroy the Shape!" << "\n";
-}
+Shape::Shape(): // default constructor
+      name_{},
+      mat_{}
+      {}
 
 Shape::Shape(std::string const& name):
-        name_{name},
-        material_{}
-        {std::cout << "Construct a Shape!" << "\n";}
+      name_{name},
+      mat_{}
+      {}
 
-Shape::Shape(Material const& material):
-        name_{},
-        material_{material}
-        {std::cout << "Construct a Shape!" << "\n";}
+Shape::Shape(Material const& mat):
+      name_{},
+      mat_{mat}
+      {}
 
-Shape::Shape(std::string const& name, Material const& material):
-        name_{name},
-        material_{material}
-        {std::cout << "Construct a Shape!" << "\n";}
+Shape::Shape(std::string const& name, Material const& mat):
+      name_{name},
+      mat_{mat}
+      {}
+      
 
-std::string const& Shape::getName() const {
-        return name_;
-}
+std::string const& Shape::name() const {return name_;}
+Material const& Shape::mat() const {return mat_;}
 
-Material const& Shape::getMaterial() const {
-        return material_;
-}
+std::ostream& Shape::print(std::ostream& os) const
+    {
+      os<<"Name: "<<name_<<"\n"<<"Material: "<<mat_<<"\n";
+      return os;
+    }
 
-/* virtual */ std::ostream& Shape::print(std::ostream& os) const {
-        os << "Shape " << name_ << "\n" << material_;
-        return os;
-}
-
-std::ostream& operator<<(std::ostream& os, Shape const& s) {
-        s.print(os);
-        return os;
+std::ostream& operator<<(std::ostream& os, Shape const& s)
+{
+  s.print(os);
+  return os;
 }

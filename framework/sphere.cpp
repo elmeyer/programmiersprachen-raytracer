@@ -1,128 +1,57 @@
 #include "sphere.hpp"
-#include <string>
+#include <cmath>
 
 Sphere::Sphere(): // default constructor
-        Shape(),
-        center_{0.0, 0.0, 0.0},
-        radius_{0.0}
-        {std::cout << "Construct a Sphere!" << "\n";}
-
-/* virtual */ Sphere::~Sphere() { // destructor
-        std::cout << "Destroy the Sphere!" << "\n";
-}
+  Shape(),
+  center_{0, 0, 0},
+  radius_{1.0}
+  {}
 
 Sphere::Sphere(Sphere const& s): // copy constructor
-        Shape(s.getName(), s.getMaterial()),
-        center_{s.center_},
-        radius_{s.radius_}
-        {std::cout << "Construct a Sphere!" << "\n";}
-/*
-Sphere::Sphere(Sphere&& s): // move constructor, copy & swap
-        Sphere()
-        {
-                swap(*this, s);
-        }
-*/
-Sphere::Sphere(std::string const& name):
-        Shape(name),
-        center_{0.0, 0.0, 0.0},
-        radius_{0.0}
-        {std::cout << "Construct a Sphere!" << "\n";}
+  Shape(s.name(), s.mat()),
+  center_{s.center_},
+  radius_{s.radius_}
+  {}
 
-Sphere::Sphere(Material const& material):
-        Shape(material),
-        center_{0.0, 0.0, 0.0},
-        radius_{0.0}
-        {std::cout << "Construct a Sphere!" << "\n";}
+Sphere::Sphere(std::string const& name, Material const& mat):
+  Shape(name, mat),
+  center_{0, 0, 0},
+  radius_{1.0}
+  {}
 
-Sphere::Sphere(std::string const& name, Material const& material):
-        Shape(name, material),
-        center_{0.0, 0.0, 0.0},
-        radius_{0.0}
-        {std::cout << "Construct a Sphere!" << "\n";}
+Sphere::Sphere(glm::vec3 const& center, float radius):
+  Shape(),
+  center_{center},
+  radius_{radius}
+  {}
 
-Sphere::Sphere(glm::vec3 const& c, double r):
-        Shape(),
-        center_{c},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
+Sphere::Sphere(glm::vec3 const& center, float radius,
+               std::string const& name, Material const& mat):
+  Shape(name, mat),
+  center_{center},
+  radius_{radius}
+  {}
 
-Sphere::Sphere(glm::vec3 const& c, double r, std::string const& name):
-        Shape(name),
-        center_{c},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
 
-Sphere::Sphere(glm::vec3 const& c, double r, Material const& material):
-        Shape(material),
-        center_{c},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
+float Sphere::area() const {return (4 * M_PI * radius_ * radius_);}
+float Sphere::volume() const
+  {return ((4.0/3.0) * M_PI * radius_ * radius_ *radius_);}
 
-Sphere::Sphere(glm::vec3 const& c, double r, std::string const& name,
-                Material const& material):
-        Shape(name, material),
-        center_{c},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
+glm::vec3 Sphere::center() const {return center_;}
+float Sphere::radius() const {return radius_;}
 
-Sphere::Sphere(double r):
-        Shape(),
-        center_{0.0, 0.0, 0.0},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
-
-Sphere::Sphere(double r, std::string const& name):
-        Shape(name),
-        center_{0.0, 0.0, 0.0},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
-
-Sphere::Sphere(double r, Material const& material):
-        Shape(material),
-        center_{0.0, 0.0, 0.0},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
-
-Sphere::Sphere(double r, std::string const& name, Material const& material):
-        Shape(name, material),
-        center_{0.0, 0.0, 0.0},
-        radius_{r}
-        {std::cout << "Construct a Sphere!" << "\n";}
-/*
-void Sphere::swap(Sphere & s1, Sphere & s2) {
-        std::swap(s1.center_, s2.center_);
-        std::swap(s1.radius_, s2.radius_);
-        std::swap(s1.name_, s2.name_);
-        std::swap(s1.color_, s2.color_);
-}
-*/
-double const Sphere::getRadius() const {
-        return radius_;
+std::ostream& Sphere::print(std::ostream& os) const
+{
+  os << Shape::print(os) << "Center: ("
+     << center_.x << "," << center_.y << "," << center_.z
+     << "), Radius: " << radius_ << "\n";
+      return os;
 }
 
-glm::vec3 const& Sphere::getCenter() const {
-        return center_;
-}
-
-/* virtual */ double Sphere::area() const {
-        return (4 * M_PI * radius_ * radius_);
-}
-
-/* virtual */ double Sphere::volume() const {
-        return ((4.0/3.0) * M_PI * radius_ * radius_ * radius_);
-}
-
-/* virtual */ std::ostream& Sphere::print(std::ostream& os) const {
-        os << "Sphere " << getName() << ", Center (" << center_.x << "," 
-                << center_.y << "," << center_.z << "), Radius " << radius_ 
-                << "\n" << getMaterial();
-        return os;
-}
-
-bool Sphere::intersect(Ray const& r, float & d) {
-        auto v = glm::normalize(r.direction);
-
-        return glm::intersectRaySphere(r.origin, v, center_,
-                radius_*radius_, d);
+bool Sphere::intersect(Ray & r)
+{
+  r.direction = glm::normalize(r.direction);
+  float distance(0.0);
+  return glm::intersectRaySphere(r.origin, r.direction,
+          center_, radius_ * radius_, distance);
 }
