@@ -190,9 +190,9 @@ TEST_CASE("Material printing", "[<<]") {
 }
 
 TEST_CASE("Loading an SDF file and printing it", "[loadSDF]") {
-        auto scene = loadSDF("materials.sdf");
+        auto scene = loadSDF("test.sdf");
         for (auto i : scene->materials) {
-            std::cout << i << "\n";
+            std::cout << i.second << "\n";
         }
         delete scene;
 }
